@@ -15,16 +15,26 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MooseMain.cpp">
+    <ClCompile Include="src\MooseMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="pch.cpp">
+    <ClCompile Include="src\pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utility\Shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="pch.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="src\pch.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Utility\Shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\Shaders\shader-vertex.glsl" />
+    <None Include="src\Shaders\shader-fragment.glsl" />
   </ItemGroup>
 </Project>
