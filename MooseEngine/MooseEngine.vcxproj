@@ -80,6 +80,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Utility\GL_Window.cpp" />
     <ClCompile Include="src\Utility\Shader.cpp" />
     <ClCompile Include="src\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
@@ -90,6 +91,7 @@
     <ClCompile Include="src\MooseMain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Utility\GL_Window.h" />
     <ClInclude Include="src\Utility\Shader.h" />
     <ClInclude Include="src\pch.h" />
   </ItemGroup>

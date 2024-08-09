@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Utility/Shader.h"
+#include "Utility/GL_Window.h"
 
 // settings
 const unsigned int SCR_WIDTH = 1920;
@@ -10,36 +11,8 @@ void processInput(GLFWwindow* window);
 
 int main(void)
 {
-    GLFWwindow* window;
-
-    /* Initialize the library */
-    if (!glfwInit()) {
-        return -1;
-    }
-
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-
-    /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "Moose Engine", NULL, NULL);
-    if (!window)
-    {
-        glfwTerminate();
-        return -1;
-    }
-
-    /* Make the window's context current */
-    glfwMakeContextCurrent(window);
-
-    if (glewInit() != GLEW_OK)
-    {
-        return -1;
-    }
-    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
-
+    GL_Window window{};
+    window.InitWindow(SCR_WIDTH, SCR_HEIGHT);
     // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------
     float vertices[] = {
@@ -69,11 +42,13 @@ int main(void)
     ourShader.InitShader("src/Shaders/shader-vertex.glsl", "src/Shaders/shader-fragment.glsl");
     // render loop
     // -----------
-    while (!glfwWindowShouldClose(window))
+
+    GLFWwindow* p_Window = window.GetWindow();
+    while (!glfwWindowShouldClose(p_Window))
     {
         // input
         // -----
-        processInput(window);
+        processInput(p_Window);
 
         // render
         // ------
@@ -88,7 +63,7 @@ int main(void)
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         // -------------------------------------------------------------------------------
-        glfwSwapBuffers(window);
+        glfwSwapBuffers(p_Window);
         glfwPollEvents();
     }
 
