@@ -1,15 +1,16 @@
 #pragma once
 
-#include "../pch.h"
+#include <string>
 
-class Shader
+
+class ShaderClass
 {
 public:
-    unsigned int ID;
+    unsigned int _ID;
     // constructor generates the shader on the fly
     // ------------------------------------------------------------------------
-    Shader();
-    ~Shader();
+    ShaderClass();
+    ~ShaderClass();
     // activate the shader
     // ------------------------------------------------------------------------
     void InitShader(const char* vertexPath = "", const char* fragmentPath = "");

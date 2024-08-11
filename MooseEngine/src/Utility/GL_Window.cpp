@@ -1,5 +1,6 @@
 #include "GL_Window.h"
 
+
 bool GL_Window::InitWindow(const unsigned int SCR_WIDTH, const unsigned int SCR_HEIGHT)
 {
     /* Initialize the library */
@@ -18,7 +19,7 @@ bool GL_Window::InitWindow(const unsigned int SCR_WIDTH, const unsigned int SCR_
     if (!window)
     {
         glfwTerminate();
-        return -1;
+        return false;
     }
 
     /* Make the window's context current */
@@ -26,7 +27,7 @@ bool GL_Window::InitWindow(const unsigned int SCR_WIDTH, const unsigned int SCR_
 
     if (glewInit() != GLEW_OK)
     {
-        return -1;
+        return false;
     }
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 

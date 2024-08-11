@@ -1,17 +1,20 @@
-#include "Shader.h"
-#include "../pch.h"
-Shader::Shader()
+#include "ShaderClass.h"
+#include <GL/glew.h>
+#include <fstream>
+#include <sstream>
+#include <iostream>
+
+ShaderClass::ShaderClass(): _ID(0)
 {
-    ID = 0;
 }
 
-Shader::~Shader()
+ShaderClass::~ShaderClass()
 {
-    glDeleteProgram(ID);
+    glDeleteProgram(_ID);
 }
 
 
-void Shader::checkCompileErrors(unsigned int shader, std::string type)
+void ShaderClass::checkCompileErrors(unsigned int shader, std::string type)
 {
     int success;
     char infoLog[1024];
@@ -38,24 +41,24 @@ void Shader::checkCompileErrors(unsigned int shader, std::string type)
 
 // utility uniform functions
 // ------------------------------------------------------------------------
-void Shader::setBool(const std::string& name, bool value) const
+void ShaderClass::setBool(const std::string& name, bool value) const
 {
-    glUniform1i(glGetUniformLocation(ID, name.c_str()), (int)value);
+    glUniform1i(glGetUniformLocation(_ID, name.c_str()), (int)value);
 }
 // ------------------------------------------------------------------------
-void Shader::setInt(const std::string& name, int value) const
+void ShaderClass::setInt(const std::string& name, int value) const
 {
-    glUniform1i(glGetUniformLocation(ID, name.c_str()), value);
+    glUniform1i(glGetUniformLocation(_ID, name.c_str()), value);
 }
 // ------------------------------------------------------------------------
-void Shader::setFloat(const std::string& name, float value) const
+void ShaderClass::setFloat(const std::string& name, float value) const
 {
-    glUniform1f(glGetUniformLocation(ID, name.c_str()), value);
+    glUniform1f(glGetUniformLocation(_ID, name.c_str()), value);
 }
 
 
 
-void Shader::InitShader(const char* vertexPath, const char* fragmentPath)
+void ShaderClass::InitShader(const char* vertexPath, const char* fragmentPath)
 {
     // 1. retrieve the vertex/fragment source code from filePath
     std::string vertexCode;
@@ -100,17 +103,17 @@ void Shader::InitShader(const char* vertexPath, const char* fragmentPath)
     glCompileShader(fragment);
     checkCompileErrors(fragment, "FRAGMENT");
     // shader Program
-    ID = glCreateProgram();
-    glAttachShader(ID, vertex);
-    glAttachShader(ID, fragment);
-    glLinkProgram(ID);
-    checkCompileErrors(ID, "PROGRAM");
+    _ID = glCreateProgram();
+    glAttachShader(_ID, vertex);
+    glAttachShader(_ID, fragment);
+    glLinkProgram(_ID);
+    checkCompileErrors(_ID, "PROGRAM");
     // delete the shaders as they're linked into our program now and no longer necessary
     glDeleteShader(vertex);
     glDeleteShader(fragment);
 }
 
-void Shader::use()
+void ShaderClass::use()
 {
-    glUseProgram(ID);
+    glUseProgram(_ID);
 }
