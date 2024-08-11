@@ -4,13 +4,13 @@
 #include <sstream>
 #include <iostream>
 
-ShaderClass::ShaderClass(): _ID(0)
+ShaderClass::ShaderClass(): ID(0)
 {
 }
 
 ShaderClass::~ShaderClass()
 {
-    glDeleteProgram(_ID);
+    glDeleteProgram(ID);
 }
 
 
@@ -43,17 +43,17 @@ void ShaderClass::checkCompileErrors(unsigned int shader, std::string type)
 // ------------------------------------------------------------------------
 void ShaderClass::setBool(const std::string& name, bool value) const
 {
-    glUniform1i(glGetUniformLocation(_ID, name.c_str()), (int)value);
+    glUniform1i(glGetUniformLocation(ID, name.c_str()), (int)value);
 }
 // ------------------------------------------------------------------------
 void ShaderClass::setInt(const std::string& name, int value) const
 {
-    glUniform1i(glGetUniformLocation(_ID, name.c_str()), value);
+    glUniform1i(glGetUniformLocation(ID, name.c_str()), value);
 }
 // ------------------------------------------------------------------------
 void ShaderClass::setFloat(const std::string& name, float value) const
 {
-    glUniform1f(glGetUniformLocation(_ID, name.c_str()), value);
+    glUniform1f(glGetUniformLocation(ID, name.c_str()), value);
 }
 
 
@@ -103,11 +103,11 @@ void ShaderClass::InitShader(const char* vertexPath, const char* fragmentPath)
     glCompileShader(fragment);
     checkCompileErrors(fragment, "FRAGMENT");
     // shader Program
-    _ID = glCreateProgram();
-    glAttachShader(_ID, vertex);
-    glAttachShader(_ID, fragment);
-    glLinkProgram(_ID);
-    checkCompileErrors(_ID, "PROGRAM");
+    ID = glCreateProgram();
+    glAttachShader(ID, vertex);
+    glAttachShader(ID, fragment);
+    glLinkProgram(ID);
+    checkCompileErrors(ID, "PROGRAM");
     // delete the shaders as they're linked into our program now and no longer necessary
     glDeleteShader(vertex);
     glDeleteShader(fragment);
@@ -115,5 +115,37 @@ void ShaderClass::InitShader(const char* vertexPath, const char* fragmentPath)
 
 void ShaderClass::use()
 {
-    glUseProgram(_ID);
+    glUseProgram(ID);
+}
+
+void ShaderClass::setVec2(const std::string& name, const glm::vec2& value) const
+{
+    glUniform2fv(glGetUniformLocation(ID, name.c_str()), 1, &value[0]);
+}
+
+// ------------------------------------------------------------------------
+void ShaderClass::setVec3(const std::string& name, const glm::vec3& value) const
+{
+    glUniform3fv(glGetUniformLocation(ID, name.c_str()), 1, &value[0]);
+}
+
+// ------------------------------------------------------------------------
+void ShaderClass::setVec4(const std::string& name, const glm::vec4& value) const
+{
+    glUniform4fv(glGetUniformLocation(ID, name.c_str()), 1, &value[0]);
+}
+
+void ShaderClass::setMat2(const std::string& name, const glm::mat2& mat) const
+{
+    glUniformMatrix2fv(glGetUniformLocation(ID, name.c_str()), 1, GL_FALSE, &mat[0][0]);
+}
+// ------------------------------------------------------------------------
+void ShaderClass::setMat3(const std::string& name, const glm::mat3& mat) const
+{
+    glUniformMatrix3fv(glGetUniformLocation(ID, name.c_str()), 1, GL_FALSE, &mat[0][0]);
+}
+// ------------------------------------------------------------------------
+void ShaderClass::setMat4(const std::string& name, const glm::mat4& mat) const
+{
+    glUniformMatrix4fv(glGetUniformLocation(ID, name.c_str()), 1, GL_FALSE, &mat[0][0]);
 }

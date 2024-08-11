@@ -84,6 +84,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Utility\Camera.cpp" />
     <ClCompile Include="includes\stb_image.cpp" />
     <ClCompile Include="src\Utility\GL_Window.cpp" />
     <ClCompile Include="src\Utility\ShaderClass.cpp" />
@@ -91,6 +92,7 @@
     <ClCompile Include="src\Utility\Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Utility\Camera.h" />
     <ClInclude Include="includes\stb_image.h" />
     <ClInclude Include="src\Utility\GL_Window.h" />
     <ClInclude Include="src\Utility\ShaderClass.h" />
