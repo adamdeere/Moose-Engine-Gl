@@ -158,22 +158,7 @@ int main(void)
         model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
         lightingShader.setMat4("model", model);
         ourModel.Draw(lightingShader);
-
        
-        //// also draw the lamp object
-        //lightCubeShader.use();
-        //lightCubeShader.setMat4("projection", projection);
-        //lightCubeShader.setMat4("view", view);
-        //model = glm::mat4(1.0f);
-        //model = glm::translate(model, lightPos);
-        //model = glm::scale(model, glm::vec3(0.2f)); // a smaller cube
-        //lightCubeShader.setMat4("model", model);
-
-        //glBindVertexArray(lightCubeVAO);
-        //glDrawArrays(GL_TRIANGLES, 0, 36);
-
-        // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
-        // -------------------------------------------------------------------------------
         glfwSwapBuffers(p_Window);
         glfwPollEvents();
     }
@@ -203,6 +188,14 @@ static void processInput(GLFWwindow* window)
         camera.ProcessKeyboard(LEFT, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
         camera.ProcessKeyboard(RIGHT, deltaTime);
+
+    if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+        camera.ProcessKeyboard(UP, deltaTime);
+
+    if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+        camera.ProcessKeyboard(DOWN, deltaTime);
+
+   
 }
 
 // glfw: whenever the window size changed (by OS or user resize) this callback function executes
