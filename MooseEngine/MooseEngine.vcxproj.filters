@@ -60,6 +60,9 @@
     <ClCompile Include="includes\Engine\Components\C_Material.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="includes\Engine\Objects\GameWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Utility\ShaderClass.h">
@@ -74,10 +77,10 @@
     <ClInclude Include="src\Utility\Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="includes\mesh.h">
+    <ClInclude Include="includes\Engine\Objects\mesh.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="includes\model.h">
+    <ClInclude Include="includes\Engine\Objects\model.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="includes\Engine\Components\IComponent.h">
@@ -108,6 +111,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="includes\Engine\Components\C_Material.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Engine\Objects\GameWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

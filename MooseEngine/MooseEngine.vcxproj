@@ -84,6 +84,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="includes\Engine\Objects\GameWindow.cpp" />
     <ClCompile Include="includes\Engine\Components\C_Material.cpp" />
     <ClCompile Include="includes\Engine\Components\C_Render.cpp" />
     <ClCompile Include="includes\Engine\Managers\GameObjectManager.cpp" />
@@ -101,14 +102,15 @@
     <ClCompile Include="includes\Engine\Systems\SysRender.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="includes\Engine\Objects\GameWindow.h" />
     <ClInclude Include="includes\Engine\Components\C_Material.h" />
     <ClInclude Include="includes\Engine\Components\C_Render.h" />
     <ClInclude Include="includes\Engine\Managers\GameObjectManager.h" />
     <ClInclude Include="includes\Engine\Objects\GameObject.h" />
     <ClInclude Include="includes\Engine\Components\C_Transform.h" />
     <ClInclude Include="includes\Engine\Components\IComponent.h" />
-    <ClInclude Include="includes\mesh.h" />
-    <ClInclude Include="includes\model.h" />
+    <ClInclude Include="includes\Engine\Objects\mesh.h" />
+    <ClInclude Include="includes\Engine\Objects\model.h" />
     <ClInclude Include="includes\Engine\Objects\Material.h" />
     <ClInclude Include="includes\Engine\Systems\ISystem.h" />
     <ClInclude Include="src\Utility\Camera.h" />

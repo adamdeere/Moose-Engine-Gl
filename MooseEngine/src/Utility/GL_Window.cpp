@@ -1,6 +1,13 @@
 #include "GL_Window.h"
 
 
+GL_Window::~GL_Window()
+{
+    // glfw: terminate, clearing all previously allocated GLFW resources.
+    // ------------------------------------------------------------------
+    glfwTerminate();
+}
+
 bool GL_Window::InitWindow(const unsigned int SCR_WIDTH, const unsigned int SCR_HEIGHT)
 {
     /* Initialize the library */
@@ -32,6 +39,14 @@ bool GL_Window::InitWindow(const unsigned int SCR_WIDTH, const unsigned int SCR_
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
     return true;
+}
+
+void GL_Window::Update(float dt)
+{
+}
+
+void GL_Window::Render()
+{
 }
 
 GLFWwindow* GL_Window::GetWindow()

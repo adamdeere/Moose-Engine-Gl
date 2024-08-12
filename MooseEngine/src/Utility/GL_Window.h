@@ -6,8 +6,10 @@
 class GL_Window
 {
 public:
-
+    ~GL_Window();
     bool InitWindow(const unsigned int SCR_WIDTH = 1920, const unsigned int SCR_HEIGHT = 1080);
+    void Update(float dt);
+    void Render();
     GLFWwindow* GetWindow();
 private:
 
