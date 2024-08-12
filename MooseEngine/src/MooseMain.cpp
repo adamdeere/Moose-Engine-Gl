@@ -9,9 +9,14 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <model.h>
+#include <SystemManager.h>
+#include <C_Render.h>
+#include <C_Transform.h>
+#include <SysRender.h>
+#include <C_Material.h>
 
 
-Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
+Camera camera(glm::vec3(0.0f, 0.0f, 15.0f));
 using namespace std;
 // settings
 const unsigned int SCR_WIDTH = 1920;
@@ -45,7 +50,24 @@ int main(void)
     glfwSetInputMode(window.GetWindow(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
     // set up vertex data (and buffer(s)) and configure vertex attributes
     // ------------------------------------------------------------------
+     GameObjectManager entityManager;
+     SystemManager systemManager;
 
+     GameObject* gg = new GameObject("gg test");
+     gg->AddComponent(new C_Render());
+     gg->AddComponent(new C_Transform());
+     entityManager.AddGameObject(gg);
+
+     GameObject* cc = new GameObject("cc test");
+     cc->AddComponent(new C_Material());
+     cc->AddComponent(new C_Transform());
+     cc->AddComponent(new C_Render());
+     entityManager.AddGameObject(cc);
+
+     ISystem* newSystem;
+
+     newSystem = new SysRender();
+     systemManager.AddSystem(newSystem);
 
     float vertices[] = {
        -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
@@ -122,25 +144,20 @@ int main(void)
     ShaderClass lightCubeShader; // you can name your shader files however you like
     lightCubeShader.InitShader("Shaders/light_cube_vertex.glsl", "Shaders/light_cube_fragment.glsl");
 
-    // shader configuration
-    // --------------------
-    lightingShader.use();
-    lightingShader.setInt("material.diffuse", 0);
-    lightingShader.setInt("material.specular", 1);
-
     GLFWwindow* p_Window = window.GetWindow();
   
-    Model ourModel("resources/objects/backpack/backpack.obj");
+    Model ourModel("resources/objects/planet/planet.obj");
 
     glEnable(GL_DEPTH_TEST);
 
     while (!glfwWindowShouldClose(p_Window))
     {
+        systemManager.ActionSystems(&entityManager);
         float currentFrame = static_cast<float>(glfwGetTime());
         deltaTime = currentFrame - lastFrame;
         lastFrame = currentFrame;
         processInput(p_Window);
-
+     
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
      
@@ -154,7 +171,7 @@ int main(void)
 
         // render the loaded model
         glm::mat4 model = glm::mat4(1.0f);
-        model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
+        model = glm::translate(model, glm::vec3(0.0f, 0.0f, -10.0f));
         model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
         lightingShader.setMat4("model", model);
         ourModel.Draw(lightingShader);

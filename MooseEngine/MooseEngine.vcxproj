@@ -55,7 +55,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp14</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)src\Utility;$(SolutionDir)includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)includes\Engine\Systems;$(SolutionDir)includes\Engine\Managers;$(SolutionDir)includes\Engine\Objects;$(SolutionDir)includes\Engine\Components;$(SolutionDir)src\Utility;$(SolutionDir)includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -73,7 +73,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)src\Utility;$(SolutionDir)includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)includes\Engine\Systems;$(SolutionDir)includes\Engine\Managers;$(SolutionDir)includes\Engine\Objects;$(SolutionDir)includes\Engine\Components;$(SolutionDir)src\Utility;$(SolutionDir)includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
@@ -84,19 +84,39 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="includes\Engine\Components\C_Material.cpp" />
+    <ClCompile Include="includes\Engine\Components\C_Render.cpp" />
+    <ClCompile Include="includes\Engine\Managers\GameObjectManager.cpp" />
+    <ClCompile Include="includes\Engine\Objects\GameObject.cpp" />
+    <ClCompile Include="includes\Engine\Components\C_Transform.cpp" />
+    <ClCompile Include="includes\Engine\Components\IComponent.cpp" />
+    <ClCompile Include="includes\Engine\Objects\Material.cpp" />
+    <ClCompile Include="includes\Engine\Systems\ISystem.cpp" />
     <ClCompile Include="src\Utility\Camera.cpp" />
     <ClCompile Include="includes\stb_image.cpp" />
     <ClCompile Include="src\Utility\GL_Window.cpp" />
     <ClCompile Include="src\Utility\ShaderClass.cpp" />
     <ClCompile Include="src\MooseMain.cpp" />
+    <ClCompile Include="includes\Engine\Managers\SystemManager.cpp" />
+    <ClCompile Include="includes\Engine\Systems\SysRender.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="includes\Engine\Components\C_Material.h" />
+    <ClInclude Include="includes\Engine\Components\C_Render.h" />
+    <ClInclude Include="includes\Engine\Managers\GameObjectManager.h" />
+    <ClInclude Include="includes\Engine\Objects\GameObject.h" />
+    <ClInclude Include="includes\Engine\Components\C_Transform.h" />
+    <ClInclude Include="includes\Engine\Components\IComponent.h" />
     <ClInclude Include="includes\mesh.h" />
     <ClInclude Include="includes\model.h" />
+    <ClInclude Include="includes\Engine\Objects\Material.h" />
+    <ClInclude Include="includes\Engine\Systems\ISystem.h" />
     <ClInclude Include="src\Utility\Camera.h" />
     <ClInclude Include="includes\stb_image.h" />
     <ClInclude Include="src\Utility\GL_Window.h" />
     <ClInclude Include="src\Utility\ShaderClass.h" />
+    <ClInclude Include="includes\Engine\Managers\SystemManager.h" />
+    <ClInclude Include="includes\Engine\Systems\SysRender.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Shaders\shader-fragment.glsl">
