@@ -1,9 +1,9 @@
-Package: glm
-Version: 0.9.9.8
-Port-Version: 2
+Package: polyclipping
+Version: 6.4.2
+Port-Version: 12
 Depends: vcpkg-cmake, vcpkg-cmake-config
 Architecture: x64-windows
 Multi-Arch: same
-Abi: f1f732c51cfe8a6a27f4ad71e67159453db337af8603e64837ab336ed8f797ce
-Description: OpenGL Mathematics (GLM)
+Abi: 9b7fc1fe4c04d32e0b95b4fe35b4e9c0e71739c42dbf5f8bec19b01c5dbc34e1
+Description: The Clipper library performs clipping and offsetting for both lines and polygons. All four boolean clipping operations are supported - intersection, union, difference and exclusive-or. Polygons can be of any shape including self-intersecting polygons.
 Status: install ok half-installed

@@ -42,6 +42,7 @@ public:
     // processes input received from a mouse scroll-wheel event. Only requires input on the vertical wheel-axis
     void ProcessMouseScroll(float yoffset);
     float GetZoom() const;
+    glm::vec3 GetPosition() const;
 
 private:
     // calculates the front vector from the Camera's (updated) Euler Angles

@@ -24,9 +24,6 @@
     <ClCompile Include="src\Utility\GL_Window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Utility\Texture.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="includes\stb_image.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -41,13 +38,16 @@
     <ClInclude Include="src\Utility\GL_Window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Utility\Texture.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="includes\stb_image.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Utility\Camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\model.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

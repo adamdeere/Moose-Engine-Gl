@@ -73,6 +73,11 @@ float Camera::GetZoom() const
     return Zoom;
 }
 
+glm::vec3 Camera::GetPosition() const
+{
+    return Position;
+}
+
 // calculates the front vector from the Camera's (updated) Euler Angles
 void Camera::updateCameraVectors()
 {

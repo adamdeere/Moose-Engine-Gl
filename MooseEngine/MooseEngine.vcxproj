@@ -89,14 +89,14 @@
     <ClCompile Include="src\Utility\GL_Window.cpp" />
     <ClCompile Include="src\Utility\ShaderClass.cpp" />
     <ClCompile Include="src\MooseMain.cpp" />
-    <ClCompile Include="src\Utility\Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="includes\mesh.h" />
+    <ClInclude Include="includes\model.h" />
     <ClInclude Include="src\Utility\Camera.h" />
     <ClInclude Include="includes\stb_image.h" />
     <ClInclude Include="src\Utility\GL_Window.h" />
     <ClInclude Include="src\Utility\ShaderClass.h" />
-    <ClInclude Include="src\Utility\Texture.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\Shaders\shader-fragment.glsl">
